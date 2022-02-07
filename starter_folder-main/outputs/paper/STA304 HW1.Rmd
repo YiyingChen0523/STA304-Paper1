@@ -1,0 +1,76 @@
+---
+title: "STA304 Paper 1"
+author: "Yiying Chen"
+date: "2/2/2022"
+output:
+  pdf_document: default
+  html_document: default
+abstract: null
+bibliography: ref_list.bib
+---
+##Import data
+```{r}
+
+library(tidyverse)
+library(opendatatoronto)
+library(dplyr)
+ 
+package <- show_package("7bce9bf4-be5c-4261-af01-abfbc3510309")
+package
+ 
+resources <- list_package_resources("7bce9bf4-be5c-4261-af01-abfbc3510309")
+
+datastore_resources <- filter(resources, tolower(format) %in% c('csv', 'geojson'))
+ 
+data <- filter(datastore_resources, row_number()==1) %>% get_resource()
+glimpse(data)
+```
+
+##Data cleaning 
+```{r}
+data_clean <- data %>%
+  select(APPLICATION_FOR, BALLOTS_CAST, BALLOTS_DISTRIBUTED, BALLOTS_IN_FAVOUR, BALLOTS_OPPOSED, FINAL_VOTER_COUNT, RESPONSE_RATE_MET, POLL_RESULT)
+head(data_clean)
+```
+
+##Analyze variable features 
+```{r}
+data_clean %>% filter(!is.na(BALLOTS_IN_FAVOUR)) %>%
+ggplot(aes(x= APPLICATION_FOR, fill = POLL_RESULT)) + geom_bar() + theme_classic()+ geom_text(stat = 'count',aes(label =..count.., vjust = 0))+
+labs(x = "polling topics", y = "poll result", title = "The relationship between poll topics and correspond result")
+```
+
+##Mutate the relationship between lost ballots and corresponding response rate
+```{r}
+data_1 <- data_clean %>%
+  mutate(lost_ballots = BALLOTS_DISTRIBUTED - BALLOTS_CAST)
+```
+
+```{r}
+data_1 %>% ggplot(aes(x = RESPONSE_RATE_MET, y = lost_ballots)) + geom_point() + theme_classic()+ labs(x = "Response rate met", y = "lost ballots", title = "How the number of lost ballots affect the response rate")
+```
+
+##the distribution of ballots
+```{r}
+summary_table <- data_1 %>% filter(!is.na(BALLOTS_DISTRIBUTED)) %>% summarise(
+                                  min = min(BALLOTS_DISTRIBUTED),
+                                  Q1 = quantile(BALLOTS_DISTRIBUTED,0.25),
+                                  median = median(BALLOTS_DISTRIBUTED),
+                                  Q3 = quantile(BALLOTS_DISTRIBUTED,0.75),
+                                  max = max(BALLOTS_DISTRIBUTED),
+                                  IQR = Q3 - Q1,
+                                  mean = mean(BALLOTS_DISTRIBUTED), 
+                                  sd = sd(BALLOTS_DISTRIBUTED), 
+                                  Small_Outliers = sum(BALLOTS_DISTRIBUTED < Q1 - 1.5*IQR),
+                                  Large_Outliers = sum(BALLOTS_DISTRIBUTED > Q3 + 1.5*IQR)) 
+
+knitr::kable(summary_table, caption = "The distribution of ballots")
+```
+
+##Citation for R package 
+```{r}
+citation("tidyverse")
+citation("knitr")
+citation("kableExtra")
+```
+

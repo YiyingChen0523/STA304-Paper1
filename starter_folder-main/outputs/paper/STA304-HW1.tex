@@ -1,0 +1,514 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{STA304 Paper 1}
+\author{Yiying Chen}
+\date{2/2/2022}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={STA304 Paper 1},
+  pdfauthor={Yiying Chen},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+\begin{abstract}
+null
+\end{abstract}
+
+\#\#Import data
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
+\end{verbatim}
+
+\begin{verbatim}
+## v ggplot2 3.3.5     v purrr   0.3.4
+## v tibble  3.1.5     v dplyr   1.0.7
+## v tidyr   1.1.4     v stringr 1.4.0
+## v readr   2.0.2     v forcats 0.5.1
+\end{verbatim}
+
+\begin{verbatim}
+## -- Conflicts ------------------------------------------ tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(opendatatoronto)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+ 
+\NormalTok{package }\OtherTok{\textless{}{-}} \FunctionTok{show\_package}\NormalTok{(}\StringTok{"7bce9bf4{-}be5c{-}4261{-}af01{-}abfbc3510309"}\NormalTok{)}
+\NormalTok{package}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 1 x 11
+##   title                       id    topics civic_issues publisher excerpt dataset_category
+##   <chr>                       <chr> <chr>  <chr>        <chr>     <chr>   <chr>           
+## 1 Polls conducted by the City 7bce~ <NA>   <NA>         <NA>      <NA>    <NA>            
+## # ... with 4 more variables: num_resources <int>, formats <chr>,
+## #   refresh_rate <chr>, last_refreshed <date>
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resources }\OtherTok{\textless{}{-}} \FunctionTok{list\_package\_resources}\NormalTok{(}\StringTok{"7bce9bf4{-}be5c{-}4261{-}af01{-}abfbc3510309"}\NormalTok{)}
+
+\NormalTok{datastore\_resources }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(resources, }\FunctionTok{tolower}\NormalTok{(format) }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}csv\textquotesingle{}}\NormalTok{, }\StringTok{\textquotesingle{}geojson\textquotesingle{}}\NormalTok{))}
+ 
+\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{filter}\NormalTok{(datastore\_resources, }\FunctionTok{row\_number}\NormalTok{()}\SpecialCharTok{==}\DecValTok{1}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{get\_resource}\NormalTok{()}
+\FunctionTok{glimpse}\NormalTok{(data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Rows: 1,054
+## Columns: 25
+## $ `_id`                         <int> 801649, 801650, 801651, 801652, 801653, ~
+## $ ADDRESS                       <chr> "8 Brumell Ave", "90 Belsize Dr", "376 R~
+## $ APPLICATION_FOR               <chr> "Front Yard Parking", "Front Yard Parkin~
+## $ BALLOTS_BLANK                 <chr> "0", "0", "0", "0", "0", "0", "0", "0", ~
+## $ BALLOTS_CAST                  <int> 18, 30, 43, 137, 30, 63, 26, 35, 101, 48~
+## $ BALLOTS_DISTRIBUTED           <int> 34, 36, 97, 334, 106, 235, 235, 109, 340~
+## $ BALLOTS_IN_FAVOUR             <chr> "16", "30", "37", "101", "19", "42", "13~
+## $ BALLOTS_NEEDED_TO_PROCEED     <int> 9, 9, 23, 159, 26, 102, 51, 25, 167, 20,~
+## $ BALLOTS_NEEDED_TO_PROCEED_LBL <chr> "25% of ballots received by voters", "25~
+## $ BALLOTS_OPPOSED               <chr> "1", "0", "3", "31", "10", "20", "11", "~
+## $ BALLOTS_RECEIVED_BY_VOTERS    <int> 34, 36, 91, 316, 103, 202, 204, 99, 332,~
+## $ BALLOTS_RETURNED_TO_SENDER    <int> 0, 0, 6, 18, 3, 33, 31, 10, 8, 1, 1, 0, ~
+## $ BALLOTS_SPOILED               <chr> "1", "0", "3", "5", "1", "1", "2", "5", ~
+## $ CLOSE_DATE                    <chr> "2015-05-31", "2015-06-03", "2015-06-11"~
+## $ DECLARATIONS_ADDED            <int> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0~
+## $ FINAL_VOTER_COUNT             <int> 34, 36, 97, 334, 106, 235, 235, 109, 340~
+## $ MORATORIUM_DATE               <chr> "2018-06-01", "2018-06-04", "2018-06-12"~
+## $ OPEN_DATE                     <chr> "2015-05-01", "2015-05-04", "2015-05-12"~
+## $ PASS_RATE                     <chr> "10", "16", "23", "N/A", "16", "N/A", "N~
+## $ PASS_RATE_LABEL               <chr> "50% + 1 of received ballots", "50% + 1 ~
+## $ POLL_CD                       <chr> "FYP 2015-104", "FYP 2015-106", "FYP 201~
+## $ POLL_ID                       <int> 170, 172, 174, 176, 177, 178, 179, 180, ~
+## $ POLL_RESULT                   <chr> "In Favour", "In Favour", "In Favour", "~
+## $ POTENTIAL_VOTERS              <int> 41, 40, 135, 379, 120, 245, 333, 144, 45~
+## $ RESPONSE_RATE_MET             <chr> "Yes", "Yes", "Yes", "No", "Yes", "No", ~
+\end{verbatim}
+
+\#\#Data cleaning
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_clean }\OtherTok{\textless{}{-}}\NormalTok{ data }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{select}\NormalTok{(APPLICATION\_FOR, BALLOTS\_CAST, BALLOTS\_DISTRIBUTED, BALLOTS\_IN\_FAVOUR, BALLOTS\_OPPOSED, FINAL\_VOTER\_COUNT, RESPONSE\_RATE\_MET, POLL\_RESULT)}
+\FunctionTok{head}\NormalTok{(data\_clean)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 6 x 8
+##   APPLICATION_FOR    BALLOTS_CAST BALLOTS_DISTRIB~ BALLOTS_IN_FAVO~ BALLOTS_OPPOSED
+##   <chr>                     <int>            <int> <chr>            <chr>          
+## 1 Front Yard Parking           18               34 16               1              
+## 2 Front Yard Parking           30               36 30               0              
+## 3 Front Yard Parking           43               97 37               3              
+## 4 Traffic Calming             137              334 101              31             
+## 5 Boulevard Cafe               30              106 19               10             
+## 6 Traffic Calming              63              235 42               20             
+## # ... with 3 more variables: FINAL_VOTER_COUNT <int>, RESPONSE_RATE_MET <chr>,
+## #   POLL_RESULT <chr>
+\end{verbatim}
+
+\#\#Analyze variable features
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_clean }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(BALLOTS\_IN\_FAVOUR)) }\SpecialCharTok{\%\textgreater{}\%}
+\FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{ APPLICATION\_FOR, }\AttributeTok{fill =}\NormalTok{ POLL\_RESULT)) }\SpecialCharTok{+} \FunctionTok{geom\_bar}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+} \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{stat =} \StringTok{\textquotesingle{}count\textquotesingle{}}\NormalTok{,}\FunctionTok{aes}\NormalTok{(}\AttributeTok{label =}\NormalTok{..count.., }\AttributeTok{vjust =} \DecValTok{0}\NormalTok{))}\SpecialCharTok{+}
+\FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"polling topics"}\NormalTok{, }\AttributeTok{y =} \StringTok{"poll result"}\NormalTok{, }\AttributeTok{title =} \StringTok{"The relationship between poll topics and correspond result"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<e2>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<80>代替了dot
+\end{verbatim}
+
+\begin{verbatim}
+## Warning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :
+## 'mbcsToSbcs'里转换'Traffic Calming – Island'出错：<93>代替了dot
+\end{verbatim}
+
+\includegraphics{STA304-HW1_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\#\#Mutate the relationship between lost ballots and corresponding
+response rate
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_1 }\OtherTok{\textless{}{-}}\NormalTok{ data\_clean }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{mutate}\NormalTok{(}\AttributeTok{lost\_ballots =}\NormalTok{ BALLOTS\_DISTRIBUTED }\SpecialCharTok{{-}}\NormalTok{ BALLOTS\_CAST)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{data\_1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{ggplot}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ RESPONSE\_RATE\_MET, }\AttributeTok{y =}\NormalTok{ lost\_ballots)) }\SpecialCharTok{+} \FunctionTok{geom\_point}\NormalTok{() }\SpecialCharTok{+} \FunctionTok{theme\_classic}\NormalTok{()}\SpecialCharTok{+} \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Response rate met"}\NormalTok{, }\AttributeTok{y =} \StringTok{"lost ballots"}\NormalTok{, }\AttributeTok{title =} \StringTok{"How the number of lost ballots affect the response rate"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STA304-HW1_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\#\#the distribution of ballots
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{summary\_table }\OtherTok{\textless{}{-}}\NormalTok{ data\_1 }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(BALLOTS\_DISTRIBUTED)) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summarise}\NormalTok{(}
+                                  \AttributeTok{min =} \FunctionTok{min}\NormalTok{(BALLOTS\_DISTRIBUTED),}
+                                  \AttributeTok{Q1 =} \FunctionTok{quantile}\NormalTok{(BALLOTS\_DISTRIBUTED,}\FloatTok{0.25}\NormalTok{),}
+                                  \AttributeTok{median =} \FunctionTok{median}\NormalTok{(BALLOTS\_DISTRIBUTED),}
+                                  \AttributeTok{Q3 =} \FunctionTok{quantile}\NormalTok{(BALLOTS\_DISTRIBUTED,}\FloatTok{0.75}\NormalTok{),}
+                                  \AttributeTok{max =} \FunctionTok{max}\NormalTok{(BALLOTS\_DISTRIBUTED),}
+                                  \AttributeTok{IQR =}\NormalTok{ Q3 }\SpecialCharTok{{-}}\NormalTok{ Q1,}
+                                  \AttributeTok{mean =} \FunctionTok{mean}\NormalTok{(BALLOTS\_DISTRIBUTED), }
+                                  \AttributeTok{sd =} \FunctionTok{sd}\NormalTok{(BALLOTS\_DISTRIBUTED), }
+                                  \AttributeTok{Small\_Outliers =} \FunctionTok{sum}\NormalTok{(BALLOTS\_DISTRIBUTED }\SpecialCharTok{\textless{}}\NormalTok{ Q1 }\SpecialCharTok{{-}} \FloatTok{1.5}\SpecialCharTok{*}\NormalTok{IQR),}
+                                  \AttributeTok{Large\_Outliers =} \FunctionTok{sum}\NormalTok{(BALLOTS\_DISTRIBUTED }\SpecialCharTok{\textgreater{}}\NormalTok{ Q3 }\SpecialCharTok{+} \FloatTok{1.5}\SpecialCharTok{*}\NormalTok{IQR)) }
+
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(summary\_table, }\AttributeTok{caption =} \StringTok{"The distribution of ballots"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrrrrrrr@{}}
+\caption{The distribution of ballots}\tabularnewline
+\toprule
+min & Q1 & median & Q3 & max & IQR & mean & sd & Small\_Outliers &
+Large\_Outliers \\
+\midrule
+\endfirsthead
+\toprule
+min & Q1 & median & Q3 & max & IQR & mean & sd & Small\_Outliers &
+Large\_Outliers \\
+\midrule
+\endhead
+2 & 56 & 85 & 125 & 2424 & 69 & 118.4734 & 166.7614 & 0 & 82 \\
+\bottomrule
+\end{longtable}
+
+\#\#Citation for R package
+\#\#\texttt{\{r\}\ citation("tidyverse")\ citation("knitr")\ citation("kableExtra")}
+
+\end{document}
